@@ -28,10 +28,10 @@ La gestión eficiente de la información y la colaboración entre los empleados 
 
 **Análisis de Desarrollo** En esta fase nos enfocamos en realizar la Estructura, el Diagrama de Clases, los Requisitos de Usuario.
 
-- **Requisitos del Programa** [Documento PDF - Doc_Requisitos_De_Usuario.pdf](https://github.com/felipegallegoramirez/HogarColombia/blob/main/misc/Doc_Requisitos_De_Usuario.pdf)
-- **Diagrama de Clases** [Documento PDF - DiagramaDeClases.draw.io](https://github.com/felipegallegoramirez/HogarColombia/blob/main/misc/DiagramaSchema.pdf)
+- **Requisitos del Programa** [Documento PDF - Doc_Requisitos_De_Usuario.pdf](https://github.com/felipegallegoramirez/FileSystem/blob/main/misc/Doc_Requisitos_De_Usuario.pdf)
+- **Diagrama de Clases** [Documento PDF - DiagramaDeClases.draw.io](https://github.com/felipegallegoramirez/FileSystem/blob/main/misc/DiagramaSchema.pdf)
 
-- **Relacion paginas** [Documento PDF - RelacionPaginas.drawio](https://github.com/felipegallegoramirez/HogarColombia/blob/main/misc/DiagramaPantallas.pdf)
+- **Relacion paginas** [Documento PDF - RelacionPaginas.drawio](https://github.com/felipegallegoramirez/FileSystem/blob/main/misc/DiagramaPantallas.pdf)
 
 - **Mockup V1 - Hogar Colombia** [Link Figma - Mockup_UI_App_v1](https://www.figma.com/file/FVFzI3MQYwkrpEss9RYci1/FileSystem?type=design&node-id=0%3A1&mode=design&t=z2s61JqYIRIAOTHg-1)
 
