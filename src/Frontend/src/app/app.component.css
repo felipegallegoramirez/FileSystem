@@ -32,7 +32,6 @@ header{
 /*css del footer*/
 
 footer{
-    position:absolute;
     bottom: 0px ;
     width: 100%;
     background: rgba(181, 228, 240, 0.994);
