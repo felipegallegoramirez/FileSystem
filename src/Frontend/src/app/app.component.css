@@ -60,9 +60,13 @@ footer{
 
 .footer_redes{
     height: 45px;
-    background-color: #99DAEA;
+    background-color: var(--color-primario);
+
     display: flex;
     justify-content: center;
+}
+.footer_redes *{
+  color: var(--w);
 }
 
 
