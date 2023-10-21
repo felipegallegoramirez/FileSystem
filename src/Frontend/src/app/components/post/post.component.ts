@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PostComponent {
   
-  constructor(public activatedRoute:ActivatedRoute, public publicationService:void) { }
+  constructor(public activatedRoute:ActivatedRoute) { }
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => { 
       var idsession= params['id'];

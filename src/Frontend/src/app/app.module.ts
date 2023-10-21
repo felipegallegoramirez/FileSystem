@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PostComponent } from './components/post/post.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { FolderComponent } from './components/folder/folder.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     LoginComponent,
     HomeComponent,
     PostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    FolderComponent
   ],
   imports: [
     BrowserModule,

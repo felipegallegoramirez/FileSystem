@@ -1,10 +1,11 @@
+@import 'material-icons/iconfont/material-icons.css';
 :root{
   --color-primario:#005D74;
   --color-secundario: #008DB0; 
   --r: #D13333;
   --w: #F2F0F0;
   --b: #333;
-  --g: #79747E;
+  --g: #d2d2d2;
 }
 
 a , p ,input,button {

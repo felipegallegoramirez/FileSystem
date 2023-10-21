@@ -5,7 +5,7 @@ header{
   width:100%;
   display:flex;
   align-items:center;
-  background: rgba(181, 228, 240, 0.994);
+  background: var(--g);
 }
 .nav_imagen{
   width: 161px;
@@ -34,7 +34,7 @@ header{
 footer{
     bottom: 0px ;
     width: 100%;
-    background: rgba(181, 228, 240, 0.994);
+    background: var(--g);
 }
 .footer_contenedor{
     display: flex;

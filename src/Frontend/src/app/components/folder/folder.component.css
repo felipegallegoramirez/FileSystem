@@ -1,0 +1,68 @@
+.principal{
+    margin: auto;
+    padding: 100px 200px;
+}
+
+.principal>button{
+        font-family: inherit;
+        font-size: 20px;
+        background: var(--color-primario);
+        color: white;
+        padding: 10px;
+        align-items: center;
+        width: 200px;
+        border: none;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.2s;
+        margin: 0px 20px;
+}
+
+.principal input{
+    width: calc(100% - 240px);
+    margin: 0px;
+    font-size: 20px;
+    padding: 10px 30px;
+    outline: none;
+    border-radius: 20px;
+    border: none;
+    box-sizing: border-box;
+    background-color: var(--g);
+}
+
+.gridresult{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    padding: 100px 200px;
+}
+
+.card_folder{
+    box-sizing: border-box;
+    padding: 20px;
+    position: relative;
+    height: min-content;
+}
+
+.card_folder>img{
+ width: 100%;
+}
+
+.card_folder>p{
+    margin: 10px 0px;
+}
+
+.card_folder>p:nth-child(2){
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.card_folder>p:nth-child(4){
+    font-weight: 300;
+}
+
+.card_folder>i{
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+}
