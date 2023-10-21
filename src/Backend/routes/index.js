@@ -28,7 +28,7 @@ fs.readdirSync(pathRouter).filter((file) => {
     }
 })
 
-router.use('/public/images', express.static(path.resolve('./storage/r')));
+router.use('/public/images', express.static(path.resolve('./storage')));
 //router.use('/public/images', (req,res)=>{res.status(200).send({asd:path.resolve('./storage/r')})});
 
 // Si se le pasa otra url
