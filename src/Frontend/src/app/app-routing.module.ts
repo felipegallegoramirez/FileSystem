@@ -7,13 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { PostComponent } from './components/post/post.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { FolderComponent } from './components/folder/folder.component';
+import { VfolderComponent } from './components/vfolder/vfolder.component'; 
 
 const routes: Routes = [
   { path:'login', component: LoginComponent },
   { path:'aboutus', component: HomeComponent },
-  { path:'post:id', component: PostComponent },
+  { path:'post/:id', component: PostComponent },
   { path:'create', component: CreatePostComponent },
   { path:'folders', component: FolderComponent },
+  { path:'folder/:id', component: VfolderComponent },
 ];
  
 @NgModule({

@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PostComponent } from './components/post/post.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { FolderComponent } from './components/folder/folder.component';
+import { VfolderComponent } from './components/vfolder/vfolder.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FolderComponent } from './components/folder/folder.component';
     HomeComponent,
     PostComponent,
     CreatePostComponent,
-    FolderComponent
+    FolderComponent,
+    VfolderComponent
   ],
   imports: [
     BrowserModule,
