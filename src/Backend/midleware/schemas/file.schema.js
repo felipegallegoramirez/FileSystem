@@ -6,7 +6,6 @@ const owner = Joi.string();
 
 
 const createFileSchema = Joi.object({
-  id:id.required() ,
   url:url.required() ,
   owner:owner.required(),
 });

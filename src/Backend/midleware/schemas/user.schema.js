@@ -10,7 +10,6 @@ const verified = Joi.any()
 const ips = Joi.array().items(Joi.string());
 
 const createUserSchema = Joi.object({
-  id:id.required() ,
   email:email.required() ,
   password:password.required(),
   rol:rol.required() ,
