@@ -9,8 +9,8 @@ const messageLogin = (correo,id,code) => {
 </div>
 
 <div class="inf" style="text-align: center;">
-    <div class="divider" style="width: 40%;margin: auto;height: 8px;background-color: #16A571;border-radius:20px;"></div>
-    <a href="http://localhost:4200/#/emailcode/${id}/${code}" style="text-decoration: none;color: black;"><h3 style="font-size: 25px;margin: 10px;" >Click <b style="color:#16A571;">aqui</b> para ingresar </h3></a>
+    <div class="divider" style="width: 40%;margin: auto;height: 8px;background-color: #005D74;border-radius:20px;"></div>
+    <p style="text-decoration: none;color: black;"><h3 style="font-size: 25px;margin: 10px;" > Codigo <b style="color:#005D74;">${codigo}</b> para ingresar </h3></p>
     <p style="text-align: justify;width: 50%;margin: auto;margin-top: 90px;">Hemos detectado un intento de acceso a su cuenta recientemente. Si ha sido usted, por favor ignore este mensaje.
         <br>
         <br>
