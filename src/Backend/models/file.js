@@ -8,6 +8,11 @@ const StorageScheme = new mongoose.Schema(
         required: true,
         trim: true
       },
+    url: {
+        type: String,
+        required: true,
+        trim: true
+      },
       owner: {
         type: String,
         required: true,
