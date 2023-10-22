@@ -12,6 +12,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { FolderComponent } from './components/folder/folder.component';
 import { VfolderComponent } from './components/vfolder/vfolder.component';
 import { IntranetComponent } from './components/intranet/intranet.component';
+import { AdmonComponent } from './admon/admon.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { IntranetComponent } from './components/intranet/intranet.component';
     CreatePostComponent,
     FolderComponent,
     VfolderComponent,
-    IntranetComponent
+    IntranetComponent,
+    AdmonComponent
   ],
   imports: [
     BrowserModule,
