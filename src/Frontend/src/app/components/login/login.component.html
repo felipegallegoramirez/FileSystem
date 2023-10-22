@@ -10,11 +10,10 @@
 
 			<hr class="divisor">
 			
-			<form  class="formulario" >
-				<input type="email" placeholder="Email"id="email1"/>
-				<input type="password" placeholder="Password" id="password1"/>
-				<button>Sign up</button>
-			</form>
+			<div  class="formulario" >
+				<input type="text" placeholder="Codigo"id="code1"/>
+				<button (click)="code()">Sign up</button>
+			</div>
 </div>
 <!-- 
 		<div class="formulario">
@@ -35,17 +34,17 @@
 
 	<div class="form-container sign-in-container">
 
-			<form  class="formulario" >
+			<div  class="formulario" >
 			
-				<p class="form__title"><b>Sign in</b></p>
+				<p class="form__title"><b>Login</b></p>
 				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia nisi dicta omnis enim placeat ullam! Quis excepturi ut explicabo dolorum tempora, accusantium necessitatibus temporibus dolor dolores a! Pariatur, magnam nihil.</p>
 	
 				<hr>
 				<input type="email" placeholder="Email"id="email1" />
 				<input type="password" placeholder="Password" id="password1" />
-				<button >Sign In</button>
+				<button (click)="login()">Sign In</button>
+			</div>
 
-			</form>
     </div>
     
 

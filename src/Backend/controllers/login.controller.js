@@ -28,8 +28,9 @@ const loginCtrl = async (req, res, next) => {
     user.verified.code = x
 
     user = await User.findByIdAndUpdate(user._id, user)
+    console.log(x)
     await messageLogin(user.email, user._id, x)
-    res.status(200).json({ message: "enviado" })
+    res.status(200).json({ message: "enviado",_id:user._id})
 
   } catch (e) {
     next(boom.badRequest(e));
@@ -44,8 +45,8 @@ const message = async (req, res, next) => {
 
     var user = await User.findById(id);
     var ipguard = req.header('x-forwarded-for') || req.connection.remoteAddress;
-    
-    if (user.verified.state === 0 && user.verified.code === req.body.code) {
+    if (user.verified.state == 0 && user.verified.code == req.body.code) {
+
       console.log("No ip")
       if (!user.ips.find(x => x === ipguard)) {
         console.log("No ip")
@@ -58,7 +59,6 @@ const message = async (req, res, next) => {
 
       const data = {
         token: tokenJwt,
-        shopid:user.shop.id
       };
 
 
