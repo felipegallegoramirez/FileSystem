@@ -19,7 +19,7 @@ const StorageScheme = new mongoose.Schema(
     },
 
     rol: [{
-      type: String,
+      type: Number,
     }],
 
     files_id: [{

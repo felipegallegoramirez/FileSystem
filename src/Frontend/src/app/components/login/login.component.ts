@@ -33,7 +33,6 @@ export class LoginComponent {
     } 
     console.log(data)
     this.authService.postAuth(data).subscribe((res)=>{
-      alert(res)
       // @ts-ignore: Object is possibly 'null'
       container.classList.add("right-panel-active");
       this.id=res._id
@@ -55,6 +54,8 @@ export class LoginComponent {
         var x = res.token
         localStorage.setItem('token',x);
         window.location.replace("http://localhost:4200/intranet");
+    },(err)=>{
+      alert(err.message)
     })
   }
 
