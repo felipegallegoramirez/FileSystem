@@ -6,6 +6,8 @@ header{
   display:flex;
   align-items:center;
   background: var(--g);
+  position: relative;
+  z-index: 200;
 }
 .nav_imagen{
   width: 161px;
@@ -32,6 +34,8 @@ header{
 /*css del footer*/
 
 footer{
+  position: relative;
+  z-index: 200;
     bottom: 0px ;
     width: 100%;
     background: var(--g);
@@ -90,7 +94,9 @@ a{
   display: none;
 }
   
-
+.router{
+  min-height: 100vh;
+}
 
 
 

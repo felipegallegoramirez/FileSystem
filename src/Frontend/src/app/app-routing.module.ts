@@ -9,6 +9,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { FolderComponent } from './components/folder/folder.component';
 import { VfolderComponent } from './components/vfolder/vfolder.component'; 
 import { IntranetComponent } from './components/intranet/intranet.component';
+import { AdmonComponent } from './components/admon/admon.component';
 
 const routes: Routes = [
   { path:'login', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path:'folders', component: FolderComponent },
   { path:'folder/:id', component: VfolderComponent },
   { path:'intranet', component: IntranetComponent },
+  { path:'porfile', component: AdmonComponent },
 ];
  
 @NgModule({

@@ -12,7 +12,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { FolderComponent } from './components/folder/folder.component';
 import { VfolderComponent } from './components/vfolder/vfolder.component';
 import { IntranetComponent } from './components/intranet/intranet.component';
-import { AdmonComponent } from './admon/admon.component';
+import { AdmonComponent } from './components/admon/admon.component';
 
 
 @NgModule({

@@ -33,7 +33,7 @@ FileCtrl.getFile = async (req, res, next) => {
     try{
         const { id } = req.params;
         const save = await File.findById(id);
-        res.status(400).send(save)
+        res.status(200).send(save)
     }catch(err){
         res.status(400).send(err)
 

@@ -6,12 +6,12 @@ const user = Joi.array().items(Joi.string());
 
 const createRolSchema = Joi.object({
   name:name.required() ,
-  user:user.required(),
+  user:user,
 });
 
 
 const updateRolSchema = Joi.object({
-  id:id ,
+  _id:id ,
   name:name ,
   user:user,
 });

@@ -38,10 +38,9 @@ const checkpermision = (permissions) => {
           next(boom.unauthorized("No user found"));
         }
         var ipguard = req.header('x-forwarded-for') || req.connection.remoteAddress;
-        if (user.shop.id == req.params.shopid) {
 
           if (user.ips.includes(ipguard)) {
-            if (user.shop.permissions.includes(permissions)) {
+            if (user.permissions.includes(permissions)) {
               next();
             }else{
               next(boom.unauthorized("No have Permissions"));
@@ -51,10 +50,6 @@ const checkpermision = (permissions) => {
             next(boom.unauthorized("Stranger ip"));
           }
 
-        }
-        else {
-          next(boom.unauthorized("Incorret Shop"));
-        }
       } else {
         next(boom.unauthorized("Incorret Token"));
       }

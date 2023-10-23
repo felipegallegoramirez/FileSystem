@@ -3,7 +3,8 @@ const Joi = require('joi');
 const id = Joi.string();
 const email = Joi.string().email();
 const password = Joi.string().min(8).max(20);
-const rol = Joi.array().items(Joi.number());
+const rol = Joi.array().items(Joi.string());
+const permissions = Joi.array().items(Joi.number());
 const files_id = Joi.array().items(Joi.string());
 const post_id = Joi.array().items(Joi.string());
 const verified = Joi.any()
@@ -15,8 +16,7 @@ const createUserSchema = Joi.object({
   rol:rol.required() ,
   files_id:files_id.required() ,
   post_id:post_id.required() ,
-  verified:verified.required() ,
-  ips:ips.required() 
+  permissions:permissions.required(),
 });
 
 const LoginUserSchema  = Joi.object({

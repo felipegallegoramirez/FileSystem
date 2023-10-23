@@ -1,0 +1,41 @@
+
+<ng-container *ngIf="agr" >
+  <div (click)="change(false)" class="background"></div>
+  <div class="form">
+    <h2>Crear carpeta</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet a maiores eius officiis. Voluptates aliquam enim possimus, assumenda aliquid dolorem soluta dolor non expedita! Aliquid officiis suscipit hic et!</p>
+    <input type="text" id="name">
+    <button *ngIf="!edit" (click)="create()">Crear</button>
+    <div class="edit" *ngIf="edit" >
+      <button (click)="delete()">Eliminar</button>
+      <button (click)="put()">Guardar</button>
+    </div>
+  </div>
+</ng-container>
+
+<div class="principal">
+  <h2>Files</h2>
+  <button (click)="change(false)">Crear</button>
+</div>
+
+<div class="gridresult">
+  <p class="gridresult__title">Codigo</p>
+  <p class="gridresult__title">Editar</p>
+  <!---->
+  <ng-container *ngFor="let rol of rols">
+    <p>{{rol.name}}</p>
+    <button (click)="change(true,rol._id)">Editar</button>
+  </ng-container>
+
+</div>
+
+
+
+<!--
+        <select id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+-->
