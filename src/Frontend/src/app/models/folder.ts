@@ -1,4 +1,5 @@
 export class Folder {
+  _id:string;
   name: string;
   image: string;
   rol: string[];
@@ -12,7 +13,8 @@ export class Folder {
     rol: string[] = [],
     users: string[] = [],
     files_id: string[] = [],
-    owner: string = ""
+    owner: string = "",
+    _id:string=""
   ) {
     this.name = name;
     this.image = image;
@@ -20,5 +22,6 @@ export class Folder {
     this.users = users;
     this.files_id = files_id;
     this.owner = owner;
+    this._id=_id
   }
 }

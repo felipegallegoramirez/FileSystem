@@ -1,18 +1,81 @@
+<ng-container *ngIf="agr">
+  <div (click)="change(false)" class="background"></div>
+  <div class="form">
+    <h2>Carpeta</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet a
+      maiores eius officiis. Voluptates aliquam enim possimus, assumenda aliquid
+      dolorem soluta dolor non expedita! Aliquid officiis suscipit hic et!
+    </p>
+    <input type="text" id="name" placeholder="Nombre "/>
+    <input class="input-img" accept="image/png, image/jpeg" id="file" type="file" />
+    <button (click)="create1()">Continuar</button>
+  </div>
+</ng-container>
 
+<ng-container *ngIf="agr2">
+  <div class="form">
+    <h2>Permisos carpeta</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet a
+      maiores eius officiis. Voluptates aliquam enim possimus, assumenda aliquid
+      dolorem soluta dolor non expedita! Aliquid officiis suscipit hic et!
+    </p>
 
+    <div class="option">
+      <label for="rol">Escoge rol:</label>
+      <select id="rol">
+        <option *ngFor="let rol of rols" value="{{ rol._id }}">
+          {{ rol.name }}
+        </option>
+      </select>
+      <button (click)="addrol()" class="option__button">Agregar</button>
+      <div>
+        <div class="data">
+            <div *ngFor="let rol of arols">
+              <p>{{ rol.name }}</p>
+              <i (click)="removerol(rol._id)" class="material-icons">remove</i>
+            </div>
+          </div>
+      </div>
 
+    </div>
+    <div class="option">
+      <label for="user">Agregar usuario</label>
+      <select id="user">
+        <option *ngFor="let user of users" value="{{ user._id }}">
+          {{ user.name }}
+        </option>
+      </select>
+      <button (click)="adduser()" class="option__button">Agregar</button>
+      <div>
+        <div class="data">
+            <div *ngFor="let user of ausers">
+              <p>{{ user.name }}</p>
+              <i (click)="removeuser(user._id)" class="material-icons">remove</i>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+    <button *ngIf="!edit" (click)="create1()">Crear</button>
+    <div class="edit" *ngIf="edit">
+      <button (click)="delete()">Eliminar</button>
+      <button (click)="put()">Guardar</button>
+    </div>
+  </div>
+</ng-container>
 
 <div class="principal">
-    <input type="text" name="" id="">
-    <button>Crear</button>
+  <input type="text" name="" id="" />
+  <button (click)="change(false)">Crear</button>
 </div>
 
 <div class="gridresult">
-    <div class="card_folder">
-        <img src="https://png.pngtree.com/background/20230612/original/pngtree-wolf-animals-images-wallpaper-for-pc-384x480-picture-image_3180467.jpg" alt="">
-        <p>Title</p>
-        <p>Owner</p>
-        <p>date</p>
-        <i class="material-icons">more_vert</i>
-    </div>
+  <div *ngFor="let folder of folders" class="card_folder">
+    <img src="{{ folder.image }}" alt="" />
+    <p>{{ folder.name }}</p>
+    <i (click)="change(true)" class="material-icons">more_vert</i>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 export class User {
+    _id:string;
     name: string;
     email: string;
     password: string;
@@ -12,14 +13,15 @@ export class User {
     ips: string[];
   
     constructor(
-      name: string,
-      email: string,
-      password: string,
+      name: string="",
+      email: string="",
+      password: string="",
       rol: number[] = [],
       files_id: string[] = [],
       post_id: string[] = [],
       verified: { state: number; code: number } = { state: 0, code: 0 },
-      ips: string[] = []
+      ips: string[] = [],
+      _id:string=""
     ) {
       this.name = name;
       this.email = email;
@@ -29,5 +31,6 @@ export class User {
       this.post_id = post_id;
       this.verified = verified;
       this.ips = ips;
+      this._id=_id
     }
   }
