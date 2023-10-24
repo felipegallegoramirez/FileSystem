@@ -27,8 +27,8 @@ export class FolderService {
     return this.http.post<Folder>(this.URL_API, folder,this.httpOptions);
   }
 
-  getFolders() {
-    return this.http.get<Folder[]>(this.URL_API,this.httpOptions);
+  getFolders(id:string) {
+    return this.http.get<Folder[]>(this.URL_API+`/${id}`,this.httpOptions);
   }
   getFolder(id:string) {
     return this.http.get<Folder>(this.URL_API+`/${id}`,this.httpOptions);

@@ -21,15 +21,15 @@ export class ImageService {
 
   postImage(file:File) {
     const fd = new FormData();
-    fd.append('images', file);
+    fd.append('image', file);
     return this.http.post<any>(this.URL_API, fd,this.httpOptions);
     
   }
 
   putImage(file:File,id:string) {
     const fd = new FormData();
-    fd.append('images', file);
-    return this.http.put(this.URL_API+`/${id}`,fd,this.httpOptions);
+    fd.append('image', file);
+    return this.http.put<any>(this.URL_API+`/${id}`,fd,this.httpOptions);
   }
 
   deleteImage(id: string) {

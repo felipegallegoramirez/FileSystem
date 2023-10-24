@@ -52,7 +52,9 @@ export class LoginComponent {
     this.authService.postAuthCode(data,id).subscribe(res=>{
         console.log(res)
         var x = res.token
+        var y = res.id
         localStorage.setItem('token',x);
+        localStorage.setItem('id',y);
         window.location.replace("http://localhost:4200/intranet");
     },(err)=>{
       alert(err.message)

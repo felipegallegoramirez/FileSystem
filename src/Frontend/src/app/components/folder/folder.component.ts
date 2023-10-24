@@ -5,6 +5,7 @@ import { RolService } from 'src/app/services/rol.service';
 import { Rol } from 'src/app/models/rol';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { ImageService } from 'src/app/services/image.service';
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.component.html',
@@ -12,12 +13,13 @@ import { User } from 'src/app/models/user';
 })
 export class FolderComponent {
 
-  constructor(private folderService:FolderService,private rolService:RolService,private userService:UserService){}
-
+  constructor(private folderService:FolderService,private rolService:RolService,private userService:UserService, private imageService:ImageService){}
+  id:string=localStorage.getItem("id")||""
   agr:boolean=false;
   agr2:boolean=false;
   edit:boolean=false;
   act:string=""
+  afolders:Folder[]=[]
   folders:Folder[]=[]
 
   rols:Rol[]=[]
@@ -52,52 +54,87 @@ export class FolderComponent {
   }
 
   create1(){
-    this.agr2=true
+    this.arols=[]
+    this.ausers=[]
+    let file=(<HTMLInputElement>document.getElementById("file"))
+    let name=(<HTMLInputElement>document.getElementById("name"))
+    if(name.value.length>2){
+      this.agr2=true
+      if(this.edit){
+        let x=this.folders.find((x)=>x._id==this.act)
+        console.log(x)
+        if(x){
+          this.arols= this.rols.filter(elemento => x?.rol.includes(elemento._id));
+          this.ausers= this.users.filter(elemento => x?.users.includes(elemento._id));
+        }
+      }else{
+        if(file.files?.item(0)){}else{
+          this.agr2=false
+          alert("Debe llenar todos los campos")
+        }
+      }
+
+    }else{
+      alert("Debe llenar todos los campos")
+    }
   }
 
   create(){
-    var name = (<HTMLInputElement>document.getElementById("name")).value;
-    var data = new Folder()
+    let file=(<HTMLInputElement>document.getElementById("file")).files?.item(0)
+    let name=(<HTMLInputElement>document.getElementById("name")).value
 
 
-    this.folderService.postFolder(data).subscribe(res=>{
-      console.log(res)
-      this.folderService.getFolders().subscribe(res=>{
-        this.folders=[]
-        this.folders=res as Folder[];
-        this.change(false);
+    if(file){
+      this.imageService.postImage(file).subscribe(res=>{
+        let id=localStorage.getItem("id")
+        var data = new Folder(name,res.url,this.arols.map(x => x._id),this.ausers.map(x => x._id),[],id||"")
+        console.log(res)
+        this.folderService.postFolder(data).subscribe(res=>{
+          console.log(res)
+          this.gets()
+        })
       })
-    })
+    }
+
   }
   gets(){
-    this.folderService.getFolders().subscribe(res=>{
+    let id=localStorage.getItem("id")
+    this.folderService.getFolders(id||"").subscribe(res=>{
       this.folders=[]
       this.folders=res as Folder[];
+      this.search()
     })
   }
   delete(){
     this.folderService.deleteFolder(this.act).subscribe(res=>{
-      console.log(res)
       this.change(false);
       this.gets();
     })
   }
 
   put(){
-    var name = (<HTMLInputElement>document.getElementById("name")).value;
-    var data = new Folder()
+    let file=(<HTMLInputElement>document.getElementById("file")).files?.item(0)
+    let name=(<HTMLInputElement>document.getElementById("name")).value
 
-
-    this.folderService.putFolder(data,this.act).subscribe(res=>{
-      console.log(res)
-      this.folderService.getFolders().subscribe(res=>{
-        this.folders=[]
-        this.folders=res as Folder[];
-        this.change(false);
+    let x=this.folders.find((x)=>x._id==this.act)
+    if(file){
+      this.imageService.putImage(file,x?.image||"").subscribe(res=>{
+        let id=localStorage.getItem("id")
+        var data = new Folder(name,res.url,this.arols.map(x => x._id),this.ausers.map(x => x._id),[],id||"",this.act)
+        console.log(res)
+        this.folderService.putFolder(data,this.act).subscribe(res=>{
+          console.log(res)
+          this.gets()
+        })
       })
-    })
-
-
+    }else{
+      let id=localStorage.getItem("id")
+      var data = new Folder(name,x?.image,this.arols.map(x => x._id),this.ausers.map(x => x._id),[],id||"",this.act)
+      this.folderService.putFolder(data,this.act).subscribe(res=>{
+        console.log(res)
+        this.gets()
+      })
+    }
 
   }
   get(){
@@ -142,6 +179,11 @@ export class FolderComponent {
     if(u){
       this.ausers.splice(u-1,1)
     }
+  }
+
+  search(){
+    let search = (<HTMLInputElement>document.getElementById("search")).value;
+    this.afolders=this.folders.filter(x=>x.name.includes(search))
   }
 
 }

@@ -1,13 +1,20 @@
 const Folder = require("../models/folder");
+const User = require("../models/user");
 
 const FolderCtrl = {};
 
 
 FolderCtrl.getFolders = async (req, res, next) => {
     try{
+        const { id } = req.params;
+        console.log(id)
+        const user=await User.findById(id);
         const save = await Folder.find();
-        res.status(200).send(save)
+        //|| x.users.findIndex(x)!=-1 || x.rol.findIndex(y=>{user.rol.findIndex(y)!=-1})==-1
+        let data=save.filter(x=>(x.owner==id|| x.users.findIndex(x)!=-1|| x.rol.find(y=>user.rol.findIndex(y)!=-1)!=null))
+        res.status(200).send(data)
     }catch(err){
+        console.log(err)
         res.status(400).send(err)
 
     }
@@ -47,7 +54,7 @@ FolderCtrl.editFolder = async (req, res, next) => {
     try{
         const { id } = req.params;
         save = await Folder.findByIdAndUpdate(id, {$set: req.body}, {new: true});
-        res.status(400).send(save)
+        res.status(200).send(save)
     }catch(err){
     res.status(400).send(err)
 }

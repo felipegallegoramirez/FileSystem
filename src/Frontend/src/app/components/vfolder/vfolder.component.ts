@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./vfolder.component.css']
 })
 export class VfolderComponent {
+  files:any=[]
 
 }

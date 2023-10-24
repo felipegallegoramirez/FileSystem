@@ -9,7 +9,11 @@
     </p>
     <input type="text" id="name" placeholder="Nombre "/>
     <input class="input-img" accept="image/png, image/jpeg" id="file" type="file" />
-    <button (click)="create1()">Continuar</button>
+
+    <div class="edit" >
+      <button *ngIf="edit" (click)="delete()">Eliminar</button>
+      <button  (click)="create1()">Continuar</button>
+    </div>
   </div>
 </ng-container>
 
@@ -59,23 +63,22 @@
 
     </div>
 
-    <button *ngIf="!edit" (click)="create1()">Crear</button>
+    <button *ngIf="!edit" (click)="create()">Crear</button>
     <div class="edit" *ngIf="edit">
-      <button (click)="delete()">Eliminar</button>
       <button (click)="put()">Guardar</button>
     </div>
   </div>
 </ng-container>
 
 <div class="principal">
-  <input type="text" name="" id="" />
+  <input (keyup)="search()" type="text" name="" id="search" />
   <button (click)="change(false)">Crear</button>
 </div>
 
 <div class="gridresult">
-  <div *ngFor="let folder of folders" class="card_folder">
-    <img src="{{ folder.image }}" alt="" />
+  <div *ngFor="let folder of afolders" class="card_folder">
+    <img src="http://localhost:3000/public/{{ folder.image }}" alt="" routerLink="/folder/{{folder._id}}"/>
     <p>{{ folder.name }}</p>
-    <i (click)="change(true)" class="material-icons">more_vert</i>
+    <i *ngIf="folder.owner==id" (click)="change(true,folder._id)" class="material-icons">more_vert</i>
   </div>
 </div>

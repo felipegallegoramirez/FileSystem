@@ -8,18 +8,19 @@ const users = Joi.array().items(Joi.string());
 const files_id = Joi.array().items(Joi.string());
 const owner = Joi.string();
 
-const createPostSchema = Joi.object({
+const createFolderSchema = Joi.object({
+  _id:Joi.any(),
   name:name.required(),
   image:image.required() ,
-  rol:rol.required() ,
-  users:users.required() ,
-  files_id:files_id.required() ,
+  rol:rol,
+  users:users ,
+  files_id:files_id ,
   owner:owner.required() 
 });
 
 
-const updatePostSchema = Joi.object({
-  id:id ,
+const updateFolderSchema = Joi.object({
+  _id:id ,
   name:name,
   image:image,
   rol:rol,
@@ -28,10 +29,10 @@ const updatePostSchema = Joi.object({
   owner:owner 
 });
 
-const getPostSchema = Joi.object({
+const getFolderSchema = Joi.object({
   id: id.required(),
 });
 
 
 
-module.exports = { createPostSchema, updatePostSchema, getPostSchema }
+module.exports = { createFolderSchema, updateFolderSchema, getFolderSchema }

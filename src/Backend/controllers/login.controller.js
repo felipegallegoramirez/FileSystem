@@ -59,6 +59,7 @@ const message = async (req, res, next) => {
 
       const data = {
         token: tokenJwt,
+        id: user._id,
       };
 
 

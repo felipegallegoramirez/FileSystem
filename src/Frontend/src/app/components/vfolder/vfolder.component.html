@@ -5,24 +5,12 @@
 
 <div class="gridresult">
     <p class="gridresult__title">Codigo</p>
-    <p class="gridresult__title">Fecha</p>
     <p class="gridresult__title">Creador</p>
     <p class="gridresult__title">Descargar</p>
     <!---->
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <button>Descargar</button>
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <button>Descargar</button>
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <button>Descargar</button>
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <p>Lorem</p>
-    <button>Descargar</button>
+    <ng-container *ngFor="let data of files">
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <button>Descargar</button>
+    </ng-container>
 </div>

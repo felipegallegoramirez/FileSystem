@@ -30,7 +30,7 @@ button{
 
 .gridresult{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin: auto;
     padding: 0px 200px 100px 200px;
     text-align: center;
