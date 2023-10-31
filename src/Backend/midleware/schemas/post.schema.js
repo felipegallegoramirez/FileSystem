@@ -9,6 +9,7 @@ const order = Joi.array().items(Joi.string());
 const owner = Joi.string();
 
 const createPostSchema = Joi.object({
+  _id:Joi.any(),
   title:title.required() ,
   description:description.required(),
   images:images.required() ,
