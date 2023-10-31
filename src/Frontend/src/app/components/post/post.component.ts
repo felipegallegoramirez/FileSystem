@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  styleUrls: ['./post.component.css'],
+  providers: [PostService]
 })
 export class PostComponent {
   
-  constructor(public activatedRoute:ActivatedRoute) { }
+  constructor(public activatedRoute:ActivatedRoute,private PostService:PostService) { }
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => { 
       var idsession= params['id'];
-      /*this.publicationService.getPublications(idsession).subscribe((res)=>{
+      this.PostService.getPost(idsession).subscribe((res)=>{
         this.datos(res);
-      })*/
+      })
       
     });
   }
@@ -23,19 +25,24 @@ export class PostComponent {
     console.log(data)
     let x = <HTMLElement>document.getElementById("titulo")
       x.innerHTML=data.title
-    for (var i=0;i<data.item.length;i++){
-      if (data.item[i].type=="2"){
-        this.imagen(data.item[i].text)
+      let img=0
+      let tex=0
+    for (var i=0;i<data.order.length;i++){
+        
+      if (data.order[i]=="2"){
+        this.imagen(data.images[img])
+        img++;
       }
-      else if (data.item[i].type=="1"){
-        this.texto(data.item[i].text)
+      else if (data.order[i]=="1"){
+        this.texto(data.text[tex])
+        tex++
       } 
     }
   }
 
   public imagen(a:string):void{
     let y = document.createElement("img")
-    y.src="http://localhost:3000/"+a
+    y.src="http://localhost:3000/public/"+a
     y.style.cssText="width: 600px;border-radius: 20px;box-shadow: 20px 10px 30px #000000a0;margin: 20px 0px;"
     document.getElementById("centro")?.appendChild(y)
   }
@@ -47,6 +54,8 @@ export class PostComponent {
     z.appendChild(y)
     document.getElementById("centro")?.appendChild(z)
   }
+
+  public create(){}
 
   
 

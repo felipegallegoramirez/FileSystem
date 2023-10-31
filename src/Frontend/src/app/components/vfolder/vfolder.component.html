@@ -1,16 +1,30 @@
+
+<ng-container *ngIf="agr" >
+    <div (click)="change()" class="background"></div>
+    <div class="form">
+      <h2>Rol</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet a maiores eius officiis. Voluptates aliquam enim possimus, assumenda aliquid dolorem soluta dolor non expedita! Aliquid officiis suscipit hic et!</p>
+      <input type="text" id="name" placeholder="name">
+      <input class="input-img"  id="file" type="file" />
+      <button (click)="create()">Crear</button>
+    </div>
+  </ng-container>
+
 <div class="principal">
     <h2>Files</h2>
-    <button>Crear</button>
+    <button (click)="change()">Crear</button>
 </div>
 
 <div class="gridresult">
     <p class="gridresult__title">Codigo</p>
-    <p class="gridresult__title">Creador</p>
+    <p class="gridresult__title">Nombre</p>
     <p class="gridresult__title">Descargar</p>
+    <p class="gridresult__title">Eliminar</p>
     <!---->
     <ng-container *ngFor="let data of files">
-        <p>Lorem</p>
-        <p>Lorem</p>
-        <button>Descargar</button>
+        <p>{{data._id}}</p>
+        <p>{{data.name}}</p>
+        <a href="http://localhost:3000/public/{{data.url}}" download><button >Descargar</button></a>
+        <button (click)="delete(data._id)">Eliminar</button>
     </ng-container>
 </div>

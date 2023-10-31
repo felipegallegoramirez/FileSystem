@@ -8,7 +8,7 @@ const {checkAuth , checkpermision} = require('../midleware/authverify')
 router.get("/:id",checkpermision(10), folder.getFolders);
 router.post("/",checkpermision(10),validatorHandler(createFolderSchema, 'body'), folder.createFolder);
 router.put("/:id",checkpermision(1),validatorHandler(updateFolderSchema, 'body'), folder.editFolder);
-router.get("/:id/:fol",checkpermision(1),validatorHandler(getFolderSchema, 'params'), folder.getFolder); 
+router.get("/one/:id/",checkpermision(1),validatorHandler(getFolderSchema, 'params'), folder.getFolder); 
 router.delete("/:id",checkpermision(1),validatorHandler(getFolderSchema, 'params'), folder.deleteFolder);
 
 

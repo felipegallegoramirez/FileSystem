@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
+import { Post } from 'src/app/models/post';
+import { ImageService } from 'src/app/services/image.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css']
+  styleUrls: ['./create-post.component.css'],
+  providers: [ImageService,PostService]
 })
 export class CreatePostComponent {
   i:Array<number> =[]
-  constructor() { }
+  constructor(private ImageService:ImageService,private PostService:PostService) { }
   data:any
   ngOnInit(): void {
-    this.data=localStorage.getItem('persona')
-    this.data=JSON.parse(this.data)
     this.addimg();
     this.addtext();
   }
@@ -32,6 +34,7 @@ export class CreatePostComponent {
     var input = document.createElement("input")
     input.type="file"
     input.id="img_"+this.i.length
+    input.accept="image/png, image/jpeg"
     var p = document.createElement("p")
     p.innerHTML="Subir fichero..."
     div.style.cssText="margin: 30px 0px;background-color: var(--color-primario);color: #fff;cursor: pointer;font-size: 18px;font-weight: bold;min-height: 15px;overflow: hidden;padding: 10px;position: relative;text-align: center;width: calc(100% - 80px);box-sizing: border-box;"
@@ -55,13 +58,33 @@ export class CreatePostComponent {
 
   crear():void{
     var asd:Array<File> =[]
+    var text:Array<string> =[]
     for (var r =0;r<this.i.length;r++){
       if (this.i[r]==2){
         let x =<HTMLInputElement>document.getElementById("img_"+(r+1));
         if (x.files!=null){
           asd.push(x.files[0])
         }
+      }if(this.i[r]==1){
+        let x =<HTMLInputElement>document.getElementById("text_"+(r+1));
+        text.push(x.value)
       }
     }
+    console.log(text)
+
+
+    this.ImageService.postImages(asd).subscribe(res=>{
+      let x = <HTMLInputElement>document.getElementById("title");
+      var title= x.value
+      let or=this.i.map(numero => {if (numero === undefined) {return "";} else {return numero.toString();}});
+      let post = new Post(title,"a",res.url,text,or,localStorage.getItem("id")||"")
+      this.PostService.postPost(post).subscribe(t=>{
+        console.log(t)
+      })
+
+    })
+
+
+
   }
 }

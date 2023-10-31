@@ -11,6 +11,14 @@ DataCtrl.saveData = async (req, res, next) => {
 
     }
 };
+DataCtrl.saveDatas = async (req, res, next) => {
+    try{
+        res.status(200).send({url:req.files.map(x=> x.filename)})
+    }catch(err){
+        res.status(400).send(err)
+
+    }
+};
 
 DataCtrl.putData = async (req, res, next) => {
     try{

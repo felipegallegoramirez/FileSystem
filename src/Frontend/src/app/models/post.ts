@@ -5,6 +5,7 @@ export class Post {
     text: string[];
     order: string[];
     owner: string;
+    _id:string;
   
     constructor(
       title: string = "",
@@ -12,7 +13,8 @@ export class Post {
       images: string[] = [],
       text: string[] = [],
       order: string[] = [],
-      owner: string = ""
+      owner: string = "",
+      id:string=""
     ) {
       this.title = title;
       this.description = description;
@@ -20,6 +22,7 @@ export class Post {
       this.text = text;
       this.order = order;
       this.owner = owner;
+      this._id=id
     }
   }
   

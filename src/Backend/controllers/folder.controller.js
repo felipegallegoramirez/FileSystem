@@ -11,7 +11,7 @@ FolderCtrl.getFolders = async (req, res, next) => {
         const user=await User.findById(id);
         const save = await Folder.find();
         //|| x.users.findIndex(x)!=-1 || x.rol.findIndex(y=>{user.rol.findIndex(y)!=-1})==-1
-        let data=save.filter(x=>(x.owner==id|| x.users.findIndex(x)!=-1|| x.rol.find(y=>user.rol.findIndex(y)!=-1)!=null))
+        let data=save.filter(x=>(x.owner==id|| x.users.indexOf(id)!=-1|| x.rol.find(y=>user.rol.indexOf(y)!=-1)!=null))
         res.status(200).send(data)
     }catch(err){
         console.log(err)
@@ -53,7 +53,10 @@ FolderCtrl.getFolder = async (req, res, next) => {
 FolderCtrl.editFolder = async (req, res, next) => {
     try{
         const { id } = req.params;
+        console.log(id)
+        console.log(await Folder.findById(id))
         save = await Folder.findByIdAndUpdate(id, {$set: req.body}, {new: true});
+
         res.status(200).send(save)
     }catch(err){
     res.status(400).send(err)

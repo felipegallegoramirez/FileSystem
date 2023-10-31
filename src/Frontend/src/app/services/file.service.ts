@@ -31,9 +31,6 @@ export class FileService {
   getFiles(id:string) {
     return this.http.get<File[]>(this.URL_API+`/${id}`,this.httpOptions);
   }
-  getFile(id:string) {
-    return this.http.get<File>(this.URL_API+`/${id}`,this.httpOptions);
-  }
 
   putFile(file: File,id:string) {
     return this.http.put(this.URL_API+`/${id}`,file,this.httpOptions);

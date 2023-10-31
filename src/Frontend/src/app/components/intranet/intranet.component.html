@@ -1,23 +1,19 @@
 
 <div class="container">
     <div class="left">
-        <div class="card__post">
-            <p>Titulo</p>
-            <img src="https://png.pngtree.com/background/20230612/original/pngtree-wolf-animals-images-wallpaper-for-pc-384x480-picture-image_3180467.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates sunt ad exercitationem magni, culpa veniam laudantium nostrum dicta incidunt aut ea facere atque hic unde repellat, debitis ratione eius quo.</p>
+        <div *ngFor="let post of posts" class="card__post" routerLink="/post/{{post._id}}">
+            <p>{{post.title}}</p>
+            <img src="http://localhost:3000/public/{{ post.images[0] }}" alt="">
+            <p>{{post.description}}</p>
         </div>
 
-        <div class="card__post">
-            <p>Titulo</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates sunt ad exercitationem magni, culpa veniam laudantium nostrum dicta incidunt aut ea facere atque hic unde repellat, debitis ratione eius quo.</p>
-        </div>
     </div>
     
     
     
     <div class="right">
-        <button>Archivos</button>
-        <button>Post</button>
+        <button routerLink="/folder/6540565607a77321ce07e16d">Archivos</button>
+        <button routerLink="/create">Post</button>
     
     </div>
 </div>

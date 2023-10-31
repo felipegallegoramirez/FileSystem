@@ -1,12 +1,16 @@
 const File = require("../models/file");
+const Folder = require("../models/folder");
 
 const FileCtrl = {};
 
 
 FileCtrl.getFiles = async (req, res, next) => {
     try{
+        const { id } = req.params;
         const save = await File.find();
-        res.status(200).send(save)
+        const folder = await Folder.findById(id);
+        let data = save.filter(x=> folder.files_id.includes(x._id))
+        res.status(200).send(data)
     }catch(err){
         res.status(400).send(err)
 

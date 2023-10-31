@@ -23,6 +23,12 @@ export class ImageService {
     const fd = new FormData();
     fd.append('image', file);
     return this.http.post<any>(this.URL_API, fd,this.httpOptions);
+  }
+
+  postFile(file:File) {
+    const fd = new FormData();
+    fd.append('image', file);
+    return this.http.post<any>(this.URL_API+`/file/`, fd,this.httpOptions);
     
   }
 
@@ -34,6 +40,14 @@ export class ImageService {
 
   deleteImage(id: string) {
     return this.http.delete(this.URL_API+`/${id}`,this.httpOptions);
+  }
+
+  postImages(imagenes: Array<File>,) {
+    const fd = new FormData();
+    for (var i = 0; i <= imagenes.length-1; i++) {
+      fd.append('image', imagenes[i]);
+    }
+    return this.http.post<any>(this.URL_API+`/images/`, fd,this.httpOptions);
   }
 
   

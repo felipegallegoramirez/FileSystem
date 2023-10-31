@@ -31,7 +31,7 @@ export class FolderService {
     return this.http.get<Folder[]>(this.URL_API+`/${id}`,this.httpOptions);
   }
   getFolder(id:string) {
-    return this.http.get<Folder>(this.URL_API+`/${id}`,this.httpOptions);
+    return this.http.get<Folder>(this.URL_API+`/one/${id}`,this.httpOptions);
   }
 
   putFolder(folder: Folder,id:string) {
