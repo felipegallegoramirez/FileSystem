@@ -15,6 +15,7 @@ export class IntranetComponent {
   ngOnInit(): void {
     this.PostService.getPosts().subscribe(res=>{
       this.posts= res as Post[]
+      this.posts.reverse();
     })
   }
   
