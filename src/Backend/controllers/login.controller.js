@@ -3,8 +3,7 @@ const boom = require('@hapi/boom');
 
 const { encrypt, compare } = require("../utils/encript");
 const { messageLogin } = require("../utils/emailprefabs/authemail");
-const { tokenSign } = require("../utils/token");
-
+const { tokenSign,verifyToken } = require("../utils/token");
 
 
 const User = require("../models/user");
@@ -70,11 +69,85 @@ const message = async (req, res, next) => {
   }catch(e){
     console.log(e)
   }
-    
-
   };
 
 
+  const checklogin = async (req, res, next) => {
+      try {
+        if (!req.headers.authorization) {
+          res.json({ status: "Notlogin" });
+          return;
+        }
+        const token = req.headers.authorization.split(" ").pop();
+        const tokenData = await verifyToken(token);
+        if(tokenData==null){
+          res.json({ status: "Notlogin" });
+          console.log(tokenData)
+        }else{
+        if (tokenData._id) {
+          const user = await User.findById(tokenData._id);
+          if(!user){
+            res.json({ status: "Notlogin" });
+          }
+          var ipguard = req.header('x-forwarded-for') || req.connection.remoteAddress;
+  
+            if (user.ips.includes(ipguard)) {
+              res.json({ status: "login" });
+            } else {
+              res.json({ status: "Notlogin" });
+            }
+  
+        } else {
+          res.json({ status: "Notlogin" });
+        }
+      }
+      } catch (e) {
+        next(boom.badRequest(e));
+      }
+    
+    }
+  
+
+  const admon = async (req, res, next) => {
+      try {
+        if (!req.headers.authorization) {
+          res.json({ status: "Notadmon" });
+          return;
+        }
+        const token = req.headers.authorization.split(" ").pop();
+        const tokenData = await verifyToken(token);
+        if(tokenData==null){
+          res.json({ status: "Notlogin" });
+        }
+        
+        if (tokenData._id) {
+          const user = await User.findById(tokenData._id);
+          if(!user){
+            res.json({ status: "Notadmon" });
+          }
+          var ipguard = req.header('x-forwarded-for') || req.connection.remoteAddress;
+  
+            if (user.ips.includes(ipguard)) {
+              if (user.permissions.includes(0)) {
+                res.json({ status: "admon" });
+              }else{
+                res.json({ status: "Notadmon" });
+              }
+  
+            } else {
+              res.json({ status: "Notadmon" });
+            }
+  
+        } else {
+          res.json({ status: "Notadmon" });
+        }
+      } catch (e) {
+        next(boom.badRequest(e));
+      }
+    }
+  
 
 
-module.exports = { loginCtrl, message };
+
+
+module.exports = { loginCtrl, message,checklogin,admon };
