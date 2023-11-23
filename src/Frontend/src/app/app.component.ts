@@ -11,10 +11,17 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AppComponent{
   title = 'fileSystem';
   loged=false;
+  admonr:boolean=false;
   constructor(private router: Router,public authService:AuthService) {}
   ngOnInit() {
     this.router.events.subscribe((event) => {
+      
       if (event instanceof NavigationEnd) {
+        this.authService.admon().subscribe(res=>{
+          if(res.status=="admon"){
+            this.admonr=true
+          }
+        })
         if(localStorage.getItem("token")){
           this.loged=true
           this.authService.checklogin().subscribe(res=>{

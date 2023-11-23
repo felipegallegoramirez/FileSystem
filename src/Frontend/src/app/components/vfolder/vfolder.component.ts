@@ -5,7 +5,9 @@ import { ImageService } from 'src/app/services/image.service';
 import { File } from 'src/app/models/file';
 import { FileService } from 'src/app/services/file.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-vfolder',
   templateUrl: './vfolder.component.html',
@@ -13,7 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class VfolderComponent {
   files:File[]=[]
-  constructor(private folderService:FolderService,private fileService:FileService, private imageService:ImageService,public activatedRoute:ActivatedRoute){}
+  constructor(private folderService:FolderService,private fileService:FileService, private imageService:ImageService,public activatedRoute:ActivatedRoute, public userService:UserService, private authService:AuthService){}
   id:string=localStorage.getItem("id")||""
   idFolder:string=""
   agr:boolean=false;
@@ -22,10 +24,15 @@ export class VfolderComponent {
   act:string=""
   afolders:Folder[]=[]
   folders:Folder[]=[]
+  public:boolean=false
+  admon:boolean=false
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => { 
       this.idFolder= params['id'];
+      if(this.idFolder=="6540565607a77321ce07e16d"){
+        this.public=true
+      }
       this.gets();
     });
 
@@ -73,10 +80,32 @@ export class VfolderComponent {
 
   gets(){
     let id=this.idFolder
+    let iduser=localStorage.getItem("id")||""
     this.fileService.getFiles(id).subscribe(res=>{
       this.files=[]
       this.files=res as File[]
-      console.log(res)
+      this.folderService.getFolder(id).subscribe(res2=>{
+        let x=res2
+        this.userService.getUser(iduser).subscribe(res3=>{
+          let user = res3 as User
+          if (x.owner==user._id|| x.users.indexOf(user._id)!=-1|| x.rol.find(y=>user.roles_id.indexOf(y)!=-1)!=null){
+
+          }else{
+            this.authService.admon().subscribe(res=>{
+            if(!this.public){
+              if(res.status!="admon"){
+                window.location.replace("http://localhost:4200/folders");
+              }
+            }
+              if(res.status=="admon"){
+                this.admon=true;
+              }
+            })
+          }
+        })
+
+      })
+
     })
 
     }

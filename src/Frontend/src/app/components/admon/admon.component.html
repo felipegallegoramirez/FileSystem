@@ -1,4 +1,11 @@
 
+<div class="pr">
+  <button (click)="changept(false)">Usuarios</button>
+  <button (click)="changept(true)">Roles</button>
+</div>
+
+
+<ng-container *ngIf="pt">
 <ng-container *ngIf="agr" >
   <div (click)="change(false)" class="background"></div>
   <div class="form">
@@ -14,7 +21,7 @@
 </ng-container>
 
 <div class="principal">
-  <h2>Files</h2>
+  <h2>Rol</h2>
   <button (click)="change(false)">Crear</button>
 </div>
 
@@ -28,14 +35,77 @@
   </ng-container>
 
 </div>
+</ng-container>
 
 
 
-<!--
-        <select id="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
-      </select>
--->
+
+
+
+
+
+
+
+
+
+
+
+<ng-container *ngIf="!pt">
+  <ng-container *ngIf="uagr">
+    <div (click)="uchange(false)" class="background"></div>
+    <div class="form">
+      <h2>Usuarios</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet a
+        maiores eius officiis. Voluptates aliquam enim possimus, assumenda aliquid
+        dolorem soluta dolor non expedita! Aliquid officiis suscipit hic et!
+      </p>
+      <input type="text" id="uname" placeholder="Nombre "/>
+      <input type="text" id="uemail" placeholder="Correo "/>
+      <input type="password" id="upassword" placeholder="Contraseña "/>
+      <div class="option">
+        <label for="urol">Escoge rol:</label>
+        <select id="urol">
+          <option *ngFor="let rol of rols" value="{{ rol._id }}">
+            {{ rol.name }}
+          </option>
+        </select>
+        <button (click)="uaddrol()" class="option__button">Agregar</button>
+        <div>
+          <div class="data">
+              <div *ngFor="let rol of arols">
+                <p>{{ rol.name }}</p>
+                <i (click)="uremoverol(rol._id)" class="material-icons">remove</i>
+              </div>
+            </div>
+        </div>
+  
+      </div>
+
+      <button *ngIf="!uedit" (click)="ucreate()">Crear</button>
+      <div class="edit" *ngIf="uedit" >
+        <button (click)="udelete()">Eliminar</button>
+        <button (click)="uput()">Guardar</button>
+      </div>
+
+    </div>
+  </ng-container>
+  
+
+  <div class="principal">
+    <h2>Usuarios</h2>
+    <button (click)="uchange(false)">Crear</button>
+  </div>
+  
+  <div class="gridresult">
+    <p class="gridresult__title">Codigo</p>
+    <p class="gridresult__title">Editar</p>
+    <!---->
+    <ng-container *ngFor="let user of users">
+      <p>{{user.name}}</p>
+      <button (click)="uchange(true,user._id)">Editar</button>
+    </ng-container>
+  
+  </div>
+  
+</ng-container>

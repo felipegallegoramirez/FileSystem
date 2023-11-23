@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const id = Joi.string();
 const email = Joi.string().email();
-const password = Joi.string().min(8).max(20);
+const password = Joi.string().min(0).max(200);
 const rol = Joi.array().items(Joi.string());
 const permissions = Joi.array().items(Joi.number());
 const files_id = Joi.array().items(Joi.string());

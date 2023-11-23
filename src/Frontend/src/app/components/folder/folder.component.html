@@ -79,6 +79,6 @@
   <div *ngFor="let folder of afolders" class="card_folder">
     <img src="http://localhost:3000/public/{{ folder.image }}" alt="" routerLink="/folder/{{folder._id}}"/>
     <p>{{ folder.name }}</p>
-    <i *ngIf="folder.owner==id" (click)="change(true,folder._id)" class="material-icons">more_vert</i>
+    <i *ngIf="folder.owner==id || admon" (click)="change(true,folder._id)" class="material-icons">more_vert</i>
   </div>
 </div>

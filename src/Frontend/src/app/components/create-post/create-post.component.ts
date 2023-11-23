@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Post } from 'src/app/models/post';
+import { AuthService } from 'src/app/services/auth.service';
 import { ImageService } from 'src/app/services/image.service';
 import { PostService } from 'src/app/services/post.service';
+
 
 @Component({
   selector: 'app-create-post',
@@ -11,11 +13,17 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class CreatePostComponent {
   i:Array<number> =[]
-  constructor(private ImageService:ImageService,private PostService:PostService) { }
+  constructor(private ImageService:ImageService,private PostService:PostService, private authService:AuthService) { }
   data:any
   ngOnInit(): void {
     this.addimg();
     this.addtext();
+    this.authService.admon().subscribe(res=>{
+      if(res.status!="admon"){
+        window.location.replace("http://localhost:4200/intranet");
+      }
+    })
+
   }
 
   delete():void{

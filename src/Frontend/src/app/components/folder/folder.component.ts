@@ -6,6 +6,8 @@ import { Rol } from 'src/app/models/rol';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { ImageService } from 'src/app/services/image.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.component.html',
@@ -13,7 +15,7 @@ import { ImageService } from 'src/app/services/image.service';
 })
 export class FolderComponent {
 
-  constructor(private folderService:FolderService,private rolService:RolService,private userService:UserService, private imageService:ImageService){}
+  constructor(private folderService:FolderService,private rolService:RolService,private userService:UserService, private imageService:ImageService, private authService:AuthService){}
   id:string=localStorage.getItem("id")||""
   agr:boolean=false;
   agr2:boolean=false;
@@ -26,6 +28,9 @@ export class FolderComponent {
   users:User[]=[]
   arols:Array<Rol> =[]
   ausers:Array<User> =[]
+  admon:boolean=false;
+
+  
 
   ngOnInit() {
     this.gets();
@@ -34,6 +39,12 @@ export class FolderComponent {
     })
     this.userService.getUsers().subscribe(res=>{
       this.users=res as User[]
+    })
+
+    this.authService.admon().subscribe(res=>{
+      if(res.status=="admon"){
+        this.admon=true;
+      }
     })
   }
 

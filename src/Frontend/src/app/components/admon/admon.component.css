@@ -18,6 +18,8 @@
     box-sizing: border-box;
     border-radius: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    overflow-y: scroll;
+    max-height: 500px;
 }
 
 .form>p{
@@ -90,4 +92,54 @@ background-color: var(--g);
 
 .gridresult>button{
     margin: auto;
+}
+
+.pr{
+    margin: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.form>.option{
+    margin: 10px 0px;
+}
+
+.form>.option>button{
+    font-family: inherit;
+    font-size: 20px;
+    background: var(--color-primario);
+    color: white;
+    padding: 10px;
+    align-items: center;
+    width: 100px;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    margin: 0px 20px;
+}
+.form>.option>div{
+    width: 100%;
+    overflow-x: scroll;    
+    margin-bottom: 10px;
+}
+.form>.option>div>.data{
+    height: 70px;
+    display: flex;
+}
+
+.form>.option>div>.data>div{
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    width: max-content;
+}
+
+.form>.option>div>.data>div>i{
+    color: var(--w);
+    background-color: var(--color-primario);
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 10px;
+    cursor: pointer;
 }

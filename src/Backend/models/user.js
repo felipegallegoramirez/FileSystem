@@ -19,9 +19,6 @@ const StorageScheme = new mongoose.Schema(
       require: true,
     },
 
-    rol: [{
-      type: String,
-    }],
 
     permissions: [{
       type: Number,
@@ -32,6 +29,9 @@ const StorageScheme = new mongoose.Schema(
     }],
 
     post_id: [{
+      type: String,
+    }],
+    roles_id: [{
       type: String,
     }],
 

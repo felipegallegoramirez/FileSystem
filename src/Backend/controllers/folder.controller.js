@@ -11,7 +11,13 @@ FolderCtrl.getFolders = async (req, res, next) => {
         const user=await User.findById(id);
         const save = await Folder.find();
         //|| x.users.findIndex(x)!=-1 || x.rol.findIndex(y=>{user.rol.findIndex(y)!=-1})==-1
-        let data=save.filter(x=>(x.owner==id|| x.users.indexOf(id)!=-1|| x.rol.find(y=>user.rol.indexOf(y)!=-1)!=null))
+        let data
+        if(user.permissions.includes(0)){
+            data=save.filter(x=>x._id!="6540565607a77321ce07e16d")
+        }else{
+            data=save.filter(x=>(x.owner==id|| x.users.indexOf(id)!=-1|| x.rol.find(y=>user.roles_id.indexOf(y)!=-1)!=null))
+        }
+
         res.status(200).send(data)
     }catch(err){
         console.log(err)

@@ -7,7 +7,7 @@
           <a routerLink="/folders"> Carpeta</a>
           <a *ngIf="!loged" id="login" routerLink="/login">Login</a>
           <ng-container *ngIf="loged" >
-            <a id="login" routerLink="/porfile">Administrar</a>
+            <a id="login" *ngIf="admonr" routerLink="/porfile">Administrar</a>
             <a id="login" (click)="salir()">Leave</a>
           </ng-container>
       </div>
